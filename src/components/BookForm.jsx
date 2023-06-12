@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid'; //eslint-disable-line
-import { addBook } from '../redux/books/booksSlice';
+import { getBooks, postBook } from '../redux/books/booksSlice';
 
 const BookForm = () => {
-  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const dispatch = useDispatch();
 
-  const handleAddBook = () => {
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const newBook = {
       item_id: uuidv4(),
       title,
       author,
+      category: 'Undefined',
     };
-
-    dispatch(addBook(newBook));
+    dispatch(postBook(newBook));
     setTitle('');
     setAuthor('');
   };
@@ -23,7 +28,7 @@ const BookForm = () => {
   return (
     <div>
       <h3 className="book-title">ADD NEW BOOK</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Book Title"
@@ -36,9 +41,7 @@ const BookForm = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <button type="button" onClick={handleAddBook}>
-          ADD BOOK
-        </button>
+        <button type="submit">ADD BOOK</button>
       </form>
     </div>
   );
