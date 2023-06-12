@@ -1,43 +1,33 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import { getBooks } from '../redux/books/booksSlice';
 
 const BookList = () => {
-	const [isLoading, setIsLoading] = useState(true);
-	const books = useSelector((state) =>
-		Object.values(state.books).flatMap((bookArray) => bookArray)
-	);
+  const books = useSelector((state) => Object.values(state.books).flatMap((bookArray) => bookArray));
 
-	console.log(books);
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		const fetchData = async () => {
-			setIsLoading(true);
-			await dispatch(getBooks());
-			setIsLoading(false);
-		};
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
 
-		fetchData();
-	}, [dispatch]);
+  if (books.length === 0) {
+    return <p>No books available</p>;
+  }
 
-	return (
-		<div>
-			{isLoading ? (
-				<p>Loading...</p>
-			) : (
-				books.map((book) => (
-					<Book
-						key={book.item_id}
-						id={book.item_id}
-						title={book.title}
-						author={book.author}
-					/>
-				))
-			)}
-		</div>
-	);
+  return (
+    <div>
+      {books.map((book) => (
+        <Book
+          key={book.item_id}
+          id={book.item_id}
+          title={book.title}
+          author={book.author}
+        />
+      ))}
+    </div>
+  );
 };
 export default BookList;
