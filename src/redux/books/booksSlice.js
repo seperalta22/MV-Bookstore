@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
@@ -18,6 +17,7 @@ export const getBooks = createAsyncThunk(
   },
 );
 
+// POST
 export const postBook = createAsyncThunk('books/postBook', async (data) => {
   try {
     const response = await axios.post(url, data);
@@ -29,6 +29,8 @@ export const postBook = createAsyncThunk('books/postBook', async (data) => {
     return error;
   }
 });
+
+// DELETE
 export const deleteBook = createAsyncThunk('books/deleteBook', async (id) => {
   try {
     await axios.delete(`${url}/${id}`);
@@ -67,7 +69,5 @@ export const booksSlice = createSlice({
       });
   },
 });
-
-export const { addBook, removeBook } = booksSlice.actions;
 
 export default booksSlice.reducer;
