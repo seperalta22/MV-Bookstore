@@ -1,8 +1,21 @@
-import { useSelector } from 'react-redux';
+/* eslint-disable max-len */
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
+import { getBooks } from '../redux/books/booksSlice';
 
 const BookList = () => {
-  const { books } = useSelector((state) => state.books);
+  const books = useSelector((state) => Object.values(state.books).flatMap((bookArray) => bookArray));
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
+  if (books.length === 0) {
+    return <p>No books available</p>;
+  }
 
   return (
     <div>
