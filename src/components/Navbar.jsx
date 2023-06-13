@@ -3,13 +3,17 @@ import '../App.css';
 
 const Navbar = () => (
   <header className="header">
-    <h1>Bookstore CMS</h1>
     <nav>
+      <NavLink id="logo" to="/">
+        <h1>Bookstore CMS</h1>
+      </NavLink>
       <NavLink to="/">Books</NavLink>
       <NavLink to="/categories">Categories</NavLink>
     </nav>
 
-    <div className="user">{/* TODO */}</div>
+    <div className="user">
+      <img src="user.svg" alt="" />
+    </div>
   </header>
 );
 

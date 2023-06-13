@@ -1,52 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Roboto+Slab:wght@100;200&display=swap');
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+:root {
+	--main-color: #0290ff;
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-  background-color: rgb(223, 223, 223);
-  font-family: 'Montserrat', sans-serif;
+	background-color: rgb(223, 223, 223);
+	font-family: 'Montserrat', sans-serif;
+}
+
+nav a:not(:first-child) {
+	text-decoration: none;
+	color: #121212;
+	font-size: 0.813rem;
+	opacity: 0.5;
+	text-transform: uppercase;
+	letter-spacing: 1.9px;
+}
+
+nav a.active {
+	opacity: 1;
+	text-decoration: none;
 }
 
 .header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  background-color: white;
-  padding: 1rem;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 1rem 8%;
 }
 
 .header nav {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  gap: 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	gap: 3rem;
 }
 
 .book {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid black;
-  gap: 5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid black;
+	gap: 5rem;
+}
+
+#logo {
+	color: var(--main-color);
+	text-decoration: none;
+	font-size: 1.85rem;
+	font-weight: bold;
+	opacity: 1;
+}
+
+.user {
+	border: solid 1px #e8e8e8;
+	border-radius: 50%;
+	padding: 0.3rem 0.4rem;
+}
+
+.user img {
+	width: 1.5rem;
+	height: 1.5rem;
 }
