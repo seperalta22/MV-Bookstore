@@ -36,10 +36,13 @@ function Book({
           <p className="book-progress-completed">Completed</p>
         </div>
       </div>
-      <div className="book-chapter">
-        <p className="book-chapter-current">CURRENT CHAPTER</p>
-        <p className="book-chapter-number">Chapter 17</p>
-        <button type="button">UPDATE PROGRESS</button>
+      <div className="chapter-container">
+        <div className="Line-1" />
+        <div className="book-chapter">
+          <p className="book-chapter-current">CURRENT CHAPTER</p>
+          <p className="book-chapter-number">Chapter 17</p>
+          <button type="button">UPDATE PROGRESS</button>
+        </div>
       </div>
     </div>
   );

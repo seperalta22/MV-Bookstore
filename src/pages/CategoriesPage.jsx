@@ -1,2 +1,2 @@
-const Categories = () => <div>Categories</div>;
+const Categories = () => <div>Categories... sorry no styling yet</div>;
 export default Categories;
